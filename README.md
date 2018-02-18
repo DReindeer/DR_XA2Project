@@ -1,9 +1,9 @@
 # DR_XA2Project
-Let's enjoy a SoundProgramming ↑↑
+<h2>Let's enjoy a SoundProgramming ↑↑</h2>
 
 <h3>[導入過程]</h3>
 
-1：XAudio2を導入
+1：<b>XAudio2を導入</b>
 
 2：リソースとソースボイスを分ける
 
