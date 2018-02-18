@@ -19,15 +19,23 @@
 </ul>
 
 <h3>[目的]</h3>
-サウンドプログラミングの知識を深める<br>
+<ul>
+<li>サウンドプログラミングの知識を深める</li>
+</ul>
 
 <h3>[API]</h3>
-XAudio2<br>
-X3DAudio<br>
-XAPO<br>
+<ul>
+<li>XAudio2</li>
+<li>X3DAudio</li>
+<li>XAPO</li>
+</ul>
 
 <h3>[ライブラリ]</h3>
-DirectX9<br>
+<ul>
+<li>DirectX9</li>
+</ul>
 
 <h3>[言語]</h3>
-c++<br>
+<ul>
+<li>c++</li>
+</ul>
