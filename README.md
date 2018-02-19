@@ -1,7 +1,7 @@
 # DR_XA2Project
-<h2>Let's enjoy a SoundProgramming ↑↑</h2>
+<h1>Let's enjoy a SoundProgramming ↑↑</h1>
 
-<h3>[導入過程]</h3>
+<h2>[導入過程]</h2>
 <ol>
 <li><b>XAudio2を導入</b></li>
 <li>リソースとソースボイスを分ける</li>
@@ -12,30 +12,30 @@
 <li><b>X3DAudioを導入                ← 今ココ！</b></li>
 </ol>
 
-<h3>[現状と発生中のバグ報告]</h3>
+<h2>[現状と発生中のバグ報告]</h2>
 <ul>
 <li>エミッターとリスナーを作成</li>
 <li>3Dサウンド再生時に右側でブツブツ音が鳴るバグあり</li>
 </ul>
 
-<h3>[目的]</h3>
+<h2>[目的]</h2>
 <ul>
 <li>サウンドプログラミングの知識を深める</li>
 </ul>
 
-<h3>[API]</h3>
+<h2>[API]</h2>
 <ul>
 <li>XAudio2</li>
 <li>X3DAudio</li>
 <li>XAPO</li>
 </ul>
 
-<h3>[ライブラリ]</h3>
+<h2>[ライブラリ]</h2>
 <ul>
 <li>DirectX9</li>
 </ul>
 
-<h3>[言語]</h3>
+<h2>[言語]</h2>
 <ul>
 <li>c++</li>
 </ul>
