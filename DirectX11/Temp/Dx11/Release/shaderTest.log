@@ -1,0 +1,32 @@
+﻿  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\ps.cso
+  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\ps2DTex.cso
+  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\psTex.cso
+  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\vs2D.cso
+  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\vs3D.cso
+  camera.cpp
+  input.cpp
+  inputKeyboard.cpp
+  inputMouse.cpp
+  inputXInput.cpp
+  Light.cpp
+  main.cpp
+  mainController.cpp
+  manager.cpp
+  modelManager.cpp
+  renderer.cpp
+  scene.cpp
+  scene2D.cpp
+src\scene2D.cpp(207): warning C4101: 'msr': ローカル変数は 1 度も使われていません。
+  scene3D.cpp
+  scene3DPoly.cpp
+  sceneBox.cpp
+  sceneXModel.cpp
+  texManager.cpp
+  utility.cpp
+  WMath.cpp
+  コンパイル中...
+  XModelLoader.cpp
+  コード生成しています。
+  All 1495 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  shaderTest.vcxproj -> D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\shaderTestRelease.exe
