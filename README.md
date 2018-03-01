@@ -10,7 +10,7 @@
 <li>Streaming再生を別スレッドで行う機構を作成</li>
 <li>不要なSEを消去する機構を作成</li>
 <li><b>X3DAudioを導入</b></li>
-<li><b>ogg→waveへのデコード           ← 今ココ！</b></li>
+<li>ogg→waveへのデコード           ← 今ココ！</li>
 </ol>
 
 <h2>[発生中のバグ報告など]</h2>
