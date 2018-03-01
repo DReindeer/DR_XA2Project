@@ -32,7 +32,7 @@
 
 <h2>[ライブラリ]</h2>
 <ul>
-<li>DirectX9</li>
+<li>DirectX11</li>
 </ul>
 
 <h2>[言語]</h2>
