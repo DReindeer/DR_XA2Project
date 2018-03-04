@@ -1,8 +1,8 @@
-﻿  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\ps.cso
-  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\ps2DTex.cso
-  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\psTex.cso
-  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\vs2D.cso
-  compilation object save succeeded; see D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\data\SHADER\vs3D.cso
+﻿  compilation object save succeeded; see D:\Documents\DR_XA2Project\DirectX11\data\SHADER\ps.cso
+  compilation object save succeeded; see D:\Documents\DR_XA2Project\DirectX11\data\SHADER\ps2DTex.cso
+  compilation object save succeeded; see D:\Documents\DR_XA2Project\DirectX11\data\SHADER\psTex.cso
+  compilation object save succeeded; see D:\Documents\DR_XA2Project\DirectX11\data\SHADER\vs2D.cso
+  compilation object save succeeded; see D:\Documents\DR_XA2Project\DirectX11\data\SHADER\vs3D.cso
   camera.cpp
   input.cpp
   inputKeyboard.cpp
@@ -21,12 +21,25 @@ src\scene2D.cpp(207): warning C4101: 'msr': ローカル変数は 1 度も使わ
   scene3DPoly.cpp
   sceneBox.cpp
   sceneXModel.cpp
+  sceneXModelListener.cpp
   texManager.cpp
   utility.cpp
-  WMath.cpp
   コンパイル中...
+  WMath.cpp
+  xa2Core.cpp
+  xa2Listener.cpp
+  xa2LoadWave.cpp
+  xa2Manager.cpp
+  xa2MasteringVoice.cpp
+  xa2SoundResourceManager.cpp
+  xa2SourceVoice2D.cpp
+  xa2SourceVoice3D.cpp
+  xa2SourceVoiceInterface.cpp
+  xa2SourceVoiceManager.cpp
   XModelLoader.cpp
   コード生成しています。
-  All 1495 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1728 of 1751 functions (98.7%) were compiled, the rest were copied from previous compilation.
+    278 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
-  shaderTest.vcxproj -> D:\Documents\Visual Studio 2017\Project\DirectX11\DirectX11\shaderTestRelease.exe
+  shaderTest.vcxproj -> D:\Documents\DR_XA2Project\DirectX11\shaderTestRelease.exe

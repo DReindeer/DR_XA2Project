@@ -1,9 +1,23 @@
 ﻿  mainController.cpp
   コードを生成中...
-  コンパイル中...
-  sceneXModelListener.cpp
-  コードを生成中...
   スキップ中... (関連する変更は検出されませんでした)
   xa2SourceVoice3D.cpp
+  xa2Listener.cpp
+  texManager.cpp
+  sceneXModelListener.cpp
+  sceneXModel.cpp
+  sceneBox.cpp
+  scene3DPoly.cpp
+  scene3D.cpp
+  scene2D.cpp
+  scene.cpp
+  renderer.cpp
+  modelManager.cpp
   manager.cpp
+  main.cpp
+  inputMouse.cpp
+  camera.cpp
+  XModelLoader.cpp
+  WMath.cpp
+  Light.cpp
   shaderTest.vcxproj -> D:\Documents\DR_XA2Project\DirectX11\shaderTestDebug.exe
