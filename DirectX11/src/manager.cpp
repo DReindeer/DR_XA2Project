@@ -22,6 +22,7 @@
 #include "scene2D.h"
 #include "sceneBox.h"
 #include "sceneXModel.h"
+#include "sceneXModelListener.h"
 
 // ======== ======== ======== ======== ======== ======== ======== ========
 // 定数定義
@@ -86,7 +87,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, bool bWindow)
 	// レンダリングテスト
 	CScene3DPoly *pField = CScene3DPoly::Create(XMFLOAT3(0.f, 0.f, 0.f), 
 		XMFLOAT3(0.f, PI * -0.5f, 0.f), XMFLOAT3(10.f, 10.f, 10.f), TEX_FIELD, 4);
-	CSceneXModel *pXModel = CSceneXModel::Create(XMFLOAT3(0.f, 0.5f, 0.f), 
+	CSceneXModelListener *pXModel = CSceneXModelListener::Create(XMFLOAT3(0.f, 0.5f, 0.f), 
 		XMFLOAT3(0.f, PI * 0.5f, 0.f), XMFLOAT3(0.1f, 0.1f, 0.1f), "data/MODEL/car/body.x", 4);
 
 	CScene2D *p2D = CScene2D::Create(XMFLOAT2(50.f, 50.f), 0.f, XMFLOAT2(50.f, 50.f), TEX_TEST, 5);

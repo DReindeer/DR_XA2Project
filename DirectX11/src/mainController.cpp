@@ -14,7 +14,7 @@
 #include "manager.h"
 #include "texManager.h"
 #include "sceneBox.h"
-#include "sceneXModel.h"
+#include "sceneXModelListener.h"
 #include "XModelLoader.h"
 
 static const float PLAYER_MOVE_SPEED = 0.005f;
@@ -55,12 +55,12 @@ void CMainController::Update(void)
 		{
 			if (pScene == nullptr)continue;
 			// タイプの取得
-			CScene::CLASSTYPE classType = pScene->GetClassType();
+			CScene::OBJTYPE objType = pScene->GetObjType();
 
-			if (classType == CScene::CLASSTYPE::SCENE_MODEL)
+			if (objType == CScene::OBJTYPE::LISTENER)
 			{
 				// ダウンキャスト
-				m_pPlayer = (CSceneXModel*)pScene;
+				m_pPlayer = (CSceneXModelListener*)pScene;
 				break;
 			}
 		}

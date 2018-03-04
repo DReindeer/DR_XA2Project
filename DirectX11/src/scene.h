@@ -59,6 +59,7 @@ public:
 	typedef enum
 	{// オブジェクトの種類
 		OBJTYPE_NONE = 0,		// 無し
+		LISTENER,
 		PLAYER,					// プレイヤー
 		ENEMY,					// 敵
 		GRAVITY_OBJ,			// 

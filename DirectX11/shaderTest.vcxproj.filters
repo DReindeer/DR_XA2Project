@@ -46,6 +46,12 @@
     <Filter Include="ソース ファイル\W">
       <UniqueIdentifier>{07e488be-5bba-4fbd-a2f0-b69e892b7808}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\xa2">
+      <UniqueIdentifier>{ebf368e2-aeb9-494b-bf1c-a46f066f6efb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\xa2">
+      <UniqueIdentifier>{0cd7baa1-02ff-406b-8dd3-99980ef5186e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera.h">
@@ -111,6 +117,39 @@
     <ClInclude Include="src\scene2D.h">
       <Filter>ヘッダー ファイル\scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\xa2Core.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2Listener.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2LoadWave.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2Manager.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2MasteringVoice.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2SoundResourceManager.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2SourceVoice2D.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2SourceVoice3D.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2SourceVoiceInterface.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xa2SourceVoiceManager.h">
+      <Filter>ヘッダー ファイル\xa2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sceneXModelListener.h">
+      <Filter>ヘッダー ファイル\scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\camera.cpp">
@@ -174,6 +213,39 @@
       <Filter>ソース ファイル\W</Filter>
     </ClCompile>
     <ClCompile Include="src\scene2D.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2Core.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2Listener.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2LoadWave.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2Manager.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2MasteringVoice.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2SoundResourceManager.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2SourceVoice2D.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2SourceVoice3D.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2SourceVoiceInterface.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xa2SourceVoiceManager.cpp">
+      <Filter>ソース ファイル\xa2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sceneXModelListener.cpp">
       <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
   </ItemGroup>

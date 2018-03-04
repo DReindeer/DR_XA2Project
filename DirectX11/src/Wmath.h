@@ -14,7 +14,7 @@ using namespace DirectX;
 
 #define RETURN_MIN(a, b) ((a) < (b) ? (a) : (b))	// 小さいほうを返す
 #define RETURN_MAX(a, b) ((a) > (b) ? (a) : (b))	// 大きいほうを返す
-#define RETURN_CLAMP(n, a, b) (RETURN_MIN(RETURN_MAX((n),(a)),(b)))	// 値or最小値or最大値を返す
+#define RETURN_CLAMP(n, a, b) (min(RETURN_MAX((n),(a)),(b)))	// 値or最小値or最大値を返す
 
 #define PI (3.141592654f) 
 #define ToRadian( degree ) ((degree) * (PI / 180.0f))
