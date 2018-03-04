@@ -23,7 +23,7 @@
 <li>サウンドプログラミングの知識を深める</li>
 </ul>
 
-<h2>[API]</h2>
+<h2>[サウンド系API]</h2>
 <ul>
 <li>XAudio2</li>
 <li>X3DAudio</li>
