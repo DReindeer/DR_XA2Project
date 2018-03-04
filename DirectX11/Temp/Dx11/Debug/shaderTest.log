@@ -1,9 +1,13 @@
 ﻿  mainController.cpp
-  コードを生成中...
-  コンパイル中...
-  sceneXModelListener.cpp
-  コードを生成中...
-  スキップ中... (関連する変更は検出されませんでした)
-  xa2SourceVoice3D.cpp
-  manager.cpp
+  LINK : 前回のインクリメンタル リンクで D:\Documents\DR_XA2Project\DirectX11\shaderTestDebug.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+DirectXTex-d.lib(BC.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(BC.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(BC4BC5.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(BC4BC5.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(BC6HBC7.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(BC6HBC7.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(DirectXTexCompress.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(DirectXTexCompress.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(DirectXTexConvert.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(DirectXTexConvert.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(DirectXTexD3D11.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(DirectXTexD3D11.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(DirectXTexImage.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(DirectXTexImage.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(DirectXTexMipMaps.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(DirectXTexMipMaps.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(DirectXTexUtil.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(DirectXTexUtil.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+DirectXTex-d.lib(DirectXTexWIC.obj) : warning LNK4099: PDB 'DirectXTex.pdb' が 'DirectXTex-d.lib(DirectXTexWIC.obj)' で、または 'D:\Documents\DR_XA2Project\DirectX11\DirectXTex.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
   shaderTest.vcxproj -> D:\Documents\DR_XA2Project\DirectX11\shaderTestDebug.exe
