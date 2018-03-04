@@ -4,3 +4,4 @@
 *.log
 *.pdb
 *.ipch
+.vs/
