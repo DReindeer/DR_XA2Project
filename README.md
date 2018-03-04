@@ -32,7 +32,8 @@
 
 <h2>[ライブラリ]</h2>
 <ul>
-<li>DirectX11</li>
+<li>DirectX11(計算ライブラリ::DirectXMath)</li>
+<li>DirectXTex</li>
 </ul>
 
 <h2>[言語]</h2>
