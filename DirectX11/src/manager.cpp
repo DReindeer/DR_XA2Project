@@ -24,6 +24,13 @@
 #include "sceneXModel.h"
 #include "sceneXModelListener.h"
 
+// XAudio2
+#include "xa2Manager.h"
+#include "xa2SourceVoiceManager.h"
+#include "xa2SourceVoice2D.h"
+#include "xa2SoundResourceManager.h"
+
+
 // ======== ======== ======== ======== ======== ======== ======== ========
 // 定数定義
 // -------- -------- -------- -------- -------- -------- -------- --------
@@ -43,6 +50,7 @@ CInputXinput *CManager::m_pXInput = nullptr;
 CTexManager *CManager::m_pTexManager = nullptr;
 CXModelManager *CManager::m_pXModelManager = nullptr;
 CMainController *CManager::m_pMainController = nullptr;
+XA2Manager *CManager::m_pXA2Manager = nullptr;			// XA2soundマネージャ
 
 // ======== ======== ======== ======== ======== ======== ======== ========
 // 初期化
@@ -92,6 +100,19 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, bool bWindow)
 
 	CScene2D *p2D = CScene2D::Create(XMFLOAT2(50.f, 50.f), 0.f, XMFLOAT2(50.f, 50.f), TEX_TEST, 5);
 
+	// xaudio2
+	m_pXA2Manager = new XA2Manager(hWnd);
+
+	// ソースボイス作成
+	XA2SourceVoice2D *pXA2SourceVoice = new XA2SourceVoice2D;
+	pXA2SourceVoice->Create("data/BGM/BGM_Yurumu.wav", -1, XA2Manager::GetLoadWaveStreaming());
+
+	// サウンドオブジェクト追加
+	XA2SourceVoiceManager *pSoundObjectManager = XA2Manager::GetSourceVoiceManager();
+	pSoundObjectManager->SetXA2SoundObject(pXA2SourceVoice, this);
+
+	pXA2SourceVoice->Play("data/BGM/BGM_Yurumu.wav");
+
 	return S_OK;
 }
 
@@ -100,6 +121,20 @@ void CManager::Uninit(void)
 {
 	// Scene全リリース
 	CScene::ReleaseAll();
+
+	// 登録済みソースボイス全解放
+	XA2SourceVoiceManager *pSoundObjectManager = XA2Manager::GetSourceVoiceManager();
+	pSoundObjectManager->StopAndUninit();
+
+	// サウンドリソース全解放
+	XA2Manager::GetSoundResourceManager()->Uninit();
+
+	// xa2SoundManager
+	if (m_pXA2Manager != nullptr)
+	{
+		delete m_pXA2Manager;
+		m_pXA2Manager = nullptr;
+	}
 
 	// キーボード
 	if (m_pKeyboard)
@@ -184,6 +219,9 @@ void CManager::Update(HWND hWnd)
 
 	// scene全更新
 	CScene::UpdateAll();
+
+	// サウンド更新
+	m_pXA2Manager->GetSourceVoiceManager()->Update();
 }
 
 // ------- 描画

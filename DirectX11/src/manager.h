@@ -3,8 +3,9 @@
 #define _MANAGER_H_
 
 #include "main.h"
+#include "xa2Manager.h"
 
-class CRenderer;		// レンダラー
+class CRenderer;
 class CCamera;
 class CTexManager;
 class CXModelManager;
@@ -12,6 +13,7 @@ class CInputKeyboard;
 class CInputMouse;
 class CInputXinput;
 class CMainController;
+class XA2Manager;
 
 class CManager
 {
@@ -32,6 +34,7 @@ public:
 	static CTexManager *GetTexManager(void) { return m_pTexManager; }
 	static CXModelManager *GetXModelManager(void) { return m_pXModelManager; }
 	static CMainController *GetMainController(void) { return m_pMainController; }
+	static XA2Manager *GetXA2Manager() { return m_pXA2Manager; }					// XA2soundマネージャ
 
 	// 入力系
 	// -------- -------- -------- -------- -------- -------- -------- --------
@@ -48,6 +51,7 @@ private:
 	static CTexManager *m_pTexManager;
 	static CXModelManager *m_pXModelManager;
 	static CMainController *m_pMainController;
+	static XA2Manager *m_pXA2Manager;				// XA2soundマネージャ
 
 	// 入力系
 	// -------- -------- -------- -------- -------- -------- -------- --------

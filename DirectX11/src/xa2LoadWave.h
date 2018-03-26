@@ -8,6 +8,7 @@
 #define _LOADWAVE_H_
 
 #include <string>
+#include <list>
 #include <vector>
 
 // 前方宣言
@@ -106,7 +107,7 @@ private:
 // 
 //--------------------------------------------------------------------------------
 class XA2LoadWaveStreaming final : public XA2LoadWave
-{
+{ 
 public:
 	XA2LoadWaveStreaming() {}
 	virtual ~XA2LoadWaveStreaming() {}
@@ -127,18 +128,17 @@ private:
 	// ロード処理
 	bool Load(const std::string& strFilePath, const int loopCount);
 
-	// プライマリとセカンダリのフリップ
+	// 要素を追加する
 	void AddNextBuffer(IXAudio2SourceVoice *pSourceVoice);
 
-	// プライマリとセカンダリのフリップ
-	void Flip(void);
+	// 先頭要素を解放
+	void XA2LoadWaveStreaming::ReleaseFlontBuffer();
 
-	// 変数定義
-	std::vector<BYTE> m_pAudioDatas[2];
-	int			m_primary = 0;		// 現在再生中のバッファ
-	int			m_secondary = 1;	// 新しいデータの書き込み可能なバッファ
-	DWORD		m_writeCursor = 0;	// 書き込みカーソル
+	// ポーリング用の再生待ちデータリスト(先頭要素が再生中)
+	std::list<std::vector<BYTE>> m_pAudioDatas;
+
+	// ファイル読み込みカーソル
+	DWORD m_writeCursor = 0;
 };
-
 
 #endif

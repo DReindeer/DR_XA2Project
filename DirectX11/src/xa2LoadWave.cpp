@@ -11,6 +11,10 @@
 #include "xa2SoundResourceManager.h"
 #include "xa2SourceVoiceInterface.h"
 
+// 定数定義
+//--------------------------------------------------------------------------------
+constexpr int MAX_STREAM_AUDIODATA = 5;
+
 //--------------------------------------------------------------------------------
 // 読み込み
 //--------------------------------------------------------------------------------
@@ -344,6 +348,13 @@ XA2LoadWaveStreaming* XA2LoadWaveStreaming::Create(const std::string& strFilePat
 		return nullptr;
 	}
 
+	// ストリーミング用のデータの入れ物を用意
+	std::vector<BYTE> data = { 0 };
+	for (int cntAudioData = 0; cntAudioData < MAX_STREAM_AUDIODATA; ++cntAudioData)
+	{
+		m_pAudioDatas.push_back(data);
+	}
+
 	return result;
 }
 
@@ -352,6 +363,7 @@ XA2LoadWaveStreaming* XA2LoadWaveStreaming::Create(const std::string& strFilePat
 //--------------------------------------------------------------------------------
 bool XA2LoadWaveStreaming::Load(const std::string& strFilePath, const int loopCount)
 {
+	// ロード
 	if (!XA2LoadWave::Load(strFilePath, loopCount, true))
 	{
 		return false;
@@ -360,7 +372,7 @@ bool XA2LoadWaveStreaming::Load(const std::string& strFilePath, const int loopCo
 	// Streamingフラグ
 	m_streaming = true;
 
-	// １秒のバッファを２つ用意
+	// １秒のバッファを要素数分用意
 	for (auto& data : m_pAudioDatas)
 	{
 		data.resize(m_pWfx->Format.nAvgBytesPerSec);
@@ -377,6 +389,7 @@ bool XA2LoadWaveStreaming::Load(const std::string& strFilePath, const int loopCo
 //--------------------------------------------------------------------------------
 void XA2LoadWaveStreaming::Release(void)
 {
+	// 要素数分削除
 	for (auto& data : m_pAudioDatas)
 	{
 		data.clear();
@@ -411,8 +424,8 @@ void XA2LoadWaveStreaming::Polling(IXAudio2SourceVoice *pSourceVoice)
 	XAUDIO2_VOICE_STATE state = {0};
 	pSourceVoice->GetState(&state);
 
-	//再生キューに常に２つのバッファを溜めておく
-	if (state.BuffersQueued < 2)
+	//再生キューに常にバッファを溜めておく
+	if (state.BuffersQueued < MAX_STREAM_AUDIODATA)
 	{
 		if (m_writeCursor >= m_audioSize)
 		{
@@ -429,41 +442,57 @@ void XA2LoadWaveStreaming::Polling(IXAudio2SourceVoice *pSourceVoice)
 		//バッファにデータを書き込んで、再生キューに追加
 		AddNextBuffer(pSourceVoice);
 	}
+
+	// 不要な先頭要素の解放
+	if (m_pAudioDatas.size() > MAX_STREAM_AUDIODATA)
+	{
+		ReleaseFlontBuffer();
+	}
 }
 
 //--------------------------------------------------------------------------------
-//  プライマリとセカンダリのフリップ
+//  要素を追加する
 //--------------------------------------------------------------------------------
 void XA2LoadWaveStreaming::AddNextBuffer(IXAudio2SourceVoice *pSourceVoice)
 {
-	// secndaryにデータを書き込んで、書き込みカーソルを進める
-	DWORD read = ReadChunkData(m_file, &m_pAudioDatas[m_secondary][0], m_pAudioDatas[m_secondary].size(), m_writeCursor);
+	// データを書き込む
+	std::vector<BYTE> audioDatas = { 0 };
+	audioDatas.resize(m_pWfx->Format.nAvgBytesPerSec);
+	DWORD read = ReadChunkData(m_file, &audioDatas[0], audioDatas.size(), m_writeCursor);
 	if (read == 0)
 	{
 		MessageBox(NULL, "AddNextBuffer", "失敗！", MB_ICONWARNING);
 		return;
 	}
 
+	// カーソルを進める
 	m_writeCursor += read;
+
+	// リストに追加
+	m_pAudioDatas.push_back(audioDatas);
 
 	// SourceVoiceにデータを送信
 	XAUDIO2_BUFFER xa2buffer = { 0 };
 	xa2buffer.AudioBytes = read;
-	xa2buffer.pAudioData = &m_pAudioDatas[m_secondary][0];
+	xa2buffer.pAudioData = &m_pAudioDatas.back()[0];
 	if (m_audioSize <= m_writeCursor)
 	{
 		xa2buffer.Flags = XAUDIO2_END_OF_STREAM;
 	}
 	pSourceVoice->SubmitSourceBuffer(&xa2buffer);
 
-	//primaryとsecondaryの入れ替え
-	Flip();
 }
 
 //--------------------------------------------------------------------------------
-//  プライマリとセカンダリのフリップ
+//  先頭要素を解放する
 //--------------------------------------------------------------------------------
-void XA2LoadWaveStreaming::Flip(void)
+void XA2LoadWaveStreaming::ReleaseFlontBuffer()
 {
-	std::swap(m_primary, m_secondary);
+	// 空の要素(先頭要素)を解放
+//	if (m_pAudioDatas.front())
+//	{
+//		delete m_pAudioDatas.front();
+//		m_pAudioDatas.front() = nullptr;
+//	}
+	m_pAudioDatas.pop_front();
 }
