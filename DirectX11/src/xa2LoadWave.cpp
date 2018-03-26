@@ -363,7 +363,7 @@ XA2LoadWaveStreaming* XA2LoadWaveStreaming::Create(const std::string& strFilePat
 //--------------------------------------------------------------------------------
 bool XA2LoadWaveStreaming::Load(const std::string& strFilePath, const int loopCount)
 {
-	// ロード
+	// ヘッダ情報ロード
 	if (!XA2LoadWave::Load(strFilePath, loopCount, true))
 	{
 		return false;

@@ -37,6 +37,7 @@
     <ClInclude Include="src\xa2LoadWave.h" />
     <ClInclude Include="src\xa2Manager.h" />
     <ClInclude Include="src\xa2MasteringVoice.h" />
+    <ClInclude Include="src\xa2OggDecoder.h" />
     <ClInclude Include="src\xa2SoundResourceManager.h" />
     <ClInclude Include="src\xa2SourceVoice2D.h" />
     <ClInclude Include="src\xa2SourceVoice3D.h" />
@@ -71,6 +72,7 @@
     <ClCompile Include="src\xa2LoadWave.cpp" />
     <ClCompile Include="src\xa2Manager.cpp" />
     <ClCompile Include="src\xa2MasteringVoice.cpp" />
+    <ClCompile Include="src\xa2OggDecoder.cpp" />
     <ClCompile Include="src\xa2SoundResourceManager.cpp" />
     <ClCompile Include="src\xa2SourceVoice2D.cpp" />
     <ClCompile Include="src\xa2SourceVoice3D.cpp" />
@@ -148,16 +150,16 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)</OutDir>
     <TargetName>$(ProjectName)$(Configuration)</TargetName>
-    <IncludePath>$(SolutionDir)..\Libs\include;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\um;$(SolutionDir)../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>../Libs\DirectXTex\Bin\Desktop_2017\Win32\$(Configuration)\;../Libs\DirectXTex\Bin\Desktop_2017\Win32;../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\Libs\include;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\um;$(SolutionDir)../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Include;../Libs\ogg\libogg\include;../Libs\ogg\libvorbis\include;$(IncludePath)</IncludePath>
+    <LibraryPath>../Libs\DirectXTex\Bin\Desktop_2017\Win32\$(Configuration)\;../Libs\DirectXTex\Bin\Desktop_2017\Win32;../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Lib\x86;../Libs\ogg\Debug;$(LibraryPath)</LibraryPath>
     <IntDir>$(SolutionDir)Temp\Dx11\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)</OutDir>
     <TargetName>$(ProjectName)$(Configuration)</TargetName>
-    <IncludePath>$(SolutionDir)..\Libs\include;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\um;$(SolutionDir)../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>../Libs\DirectXTex\Bin\Desktop_2017\Win32\$(Configuration)\;../Libs\DirectXTex\Bin\Desktop_2017\Win32;../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\Libs\include;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\um;$(SolutionDir)../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Include;../Libs\ogg\libogg\include;../Libs\ogg\libvorbis\include;$(IncludePath)</IncludePath>
+    <LibraryPath>../Libs\DirectXTex\Bin\Desktop_2017\Win32\$(Configuration)\;../Libs\DirectXTex\Bin\Desktop_2017\Win32;../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Lib\x86;../Libs\ogg\Release;$(LibraryPath)</LibraryPath>
     <IntDir>$(SolutionDir)Temp\Dx11\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -173,6 +175,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -192,6 +195,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
