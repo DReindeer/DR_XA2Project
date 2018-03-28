@@ -105,7 +105,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, bool bWindow)
 
 	// ソースボイス作成
 	XA2SourceVoice2D *pXA2SourceVoice = new XA2SourceVoice2D;
-	pXA2SourceVoice->Create("data/BGM/BGM_Yurumu.ogg", -1, XA2Manager::GetLoadOggOnAll());
+	pXA2SourceVoice->Create("data/BGM/BGM_Yurumu.ogg", -1, XA2Manager::GetLoadOggStreaming());
 
 	// サウンドオブジェクト追加
 	XA2SourceVoiceManager *pSoundObjectManager = XA2Manager::GetSourceVoiceManager();

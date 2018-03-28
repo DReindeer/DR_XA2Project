@@ -17,7 +17,7 @@ XA2SoundResourceManager::~XA2SoundResourceManager()
 //--------------------------------------------------------------------------------
 // コンテナからリソースを取得
 //--------------------------------------------------------------------------------
-XA2LoadWave *XA2SoundResourceManager::GetXA2SoundResource(std::string strFilePath)
+XA2LoadAudio *XA2SoundResourceManager::GetXA2SoundResource(std::string strFilePath)
 {
 	for (auto it : m_xa2SoundResources)
 	{

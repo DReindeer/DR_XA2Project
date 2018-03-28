@@ -76,7 +76,7 @@ void XA2SourceVoiceInterface::ReleaseEndSE()
 	XAUDIO2_VOICE_STATE xa2state;
 
 	// 不要なソースボイスを探査
-	XA2LoadWave *pWaveData = nullptr;
+	XA2LoadAudio *pWaveData = nullptr;
 	m_sourceVoices.erase(remove_if(m_sourceVoices.begin(), m_sourceVoices.end(), [&](XA2SourceVoiceData *pSourceVoiceData)
 	{
 		// 状態取得

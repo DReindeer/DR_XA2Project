@@ -14,7 +14,7 @@
 
 // 前方宣言
 //--------------------------------------------------------------------------------
-class XA2LoadWave;
+class XA2LoadAudio;
 
 // 2Dソースボイスデータ : [継承]ソースボイスデータ
 //--------------------------------------------------------------------------------
@@ -31,8 +31,8 @@ public:
 	XA2SourceVoice2D() {}
 	~XA2SourceVoice2D() {}
 
-	IXAudio2SourceVoice *Create(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)override;
-	IXAudio2SourceVoice *CreatePlay(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)override;
+	IXAudio2SourceVoice *Create(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)override;
+	IXAudio2SourceVoice *CreatePlay(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)override;
 
 	void Update()override;
 	void Polling()override;

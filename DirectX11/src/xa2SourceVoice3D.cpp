@@ -27,7 +27,7 @@ static const X3DAUDIO_DISTANCE_CURVE       Emitter_Reverb_Curve = { (X3DAUDIO_DI
 //--------------------------------------------------------------------------------
 // 生成処理
 //--------------------------------------------------------------------------------
-IXAudio2SourceVoice *XA2SourceVoice3D::Create(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)
+IXAudio2SourceVoice *XA2SourceVoice3D::Create(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)
 {
 	// ミューテックス
 #ifdef THREAD_ON
@@ -42,7 +42,7 @@ IXAudio2SourceVoice *XA2SourceVoice3D::Create(std::string strFilePath, int loopC
 
 	// リソースの取得
 	pLoadWave->Create(strFilePath, loopCount);	// wave形式で取得
-	XA2LoadWave *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
+	XA2LoadAudio *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
 
 	// マスターボイス
 	IXAudio2MasteringVoice *pMaster = XA2Manager::GetMasteringVoice()->GetMasteringVoice();
@@ -122,14 +122,14 @@ IXAudio2SourceVoice *XA2SourceVoice3D::Create(std::string strFilePath, int loopC
 //--------------------------------------------------------------------------------
 // 生成して再生
 //--------------------------------------------------------------------------------
-IXAudio2SourceVoice *XA2SourceVoice3D::CreatePlay(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)
+IXAudio2SourceVoice *XA2SourceVoice3D::CreatePlay(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)
 {
 	// 生成
 	IXAudio2SourceVoice *pSourceVoice = Create(strFilePath, loopCount, pLoadWave);
 
 	// リソースの取得
 	XA2SoundResourceManager *pXA2SoundResourceManager = XA2Manager::GetSoundResourceManager();		// サウンドリソースマネージャ
-	XA2LoadWave *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
+	XA2LoadAudio *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
 	
 	// バッファの値設定
 	XAUDIO2_BUFFER xa2buffer;
@@ -293,7 +293,7 @@ void XA2SourceVoice3D::Polling()
 	std::unique_lock<std::recursive_mutex> locker = XA2Manager::Locker();
 
 	// ポーリング処理
-	XA2LoadWave *pWaveData = nullptr;
+	XA2LoadAudio *pWaveData = nullptr;
 	for (auto it : m_sourceVoices)
 	{
 		if (it == nullptr)continue;

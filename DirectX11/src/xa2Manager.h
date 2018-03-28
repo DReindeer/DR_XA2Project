@@ -26,6 +26,7 @@ class XA2SoundResourceManager;
 class XA2LoadWaveOnAll;
 class XA2LoadWaveStreaming;
 class XA2LoadOggOnAll;
+class XA2LoadOggStreaming;
 
 
 // XAudio2の処理に必要なクラスをまとめたマネージャ
@@ -46,6 +47,7 @@ public:
 	static XA2LoadWaveOnAll *GetLoadWaveOnAll() { return m_pLoadWaveOnAll; }						// wave読み込み - CPU全のせ
 	static XA2LoadWaveStreaming *GetLoadWaveStreaming() { return m_pLoadWaveStreaming; }			// wave読み込み - ストリーミング
 	static XA2LoadOggOnAll *GetLoadOggOnAll() { return m_pLoadOggOnAll; }							// ogg読み込み - CPU全のせ
+	static XA2LoadOggStreaming *GetLoadOggStreaming() { return m_pLoadOggStreaming; }				// ogg読み込み - CPUストリーミング
 
 
 	// X3DAudio
@@ -71,6 +73,7 @@ private:
 	static XA2LoadWaveOnAll *m_pLoadWaveOnAll;					// wave読み込み - CPU全のせ
 	static XA2LoadWaveStreaming *m_pLoadWaveStreaming;			// wave読み込み - ストリーミング
 	static XA2LoadOggOnAll *m_pLoadOggOnAll;					// ogg読み込み - CPU全のせ
+	static XA2LoadOggStreaming *m_pLoadOggStreaming;			// ogg読み込み - ストリーミング
 
 
 	// X3DAudio

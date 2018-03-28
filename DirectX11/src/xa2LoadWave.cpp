@@ -11,14 +11,10 @@
 #include "xa2SoundResourceManager.h"
 #include "xa2SourceVoiceInterface.h"
 
-// 定数定義
-//--------------------------------------------------------------------------------
-constexpr int MAX_STREAM_AUDIODATA = 5;
-
 //--------------------------------------------------------------------------------
 // 読み込み
 //--------------------------------------------------------------------------------
-XA2LoadWave::LOAD_RESULT XA2LoadWave::Load(std::string strFilePath, int loopCount, bool streaming)
+XA2LoadAudio::LOAD_RESULT XA2LoadAudio::Load(std::string strFilePath, int loopCount, bool streaming)
 {
 	// ミューテックス
 #ifdef THREAD_ON
@@ -112,7 +108,7 @@ XA2LoadWave::LOAD_RESULT XA2LoadWave::Load(std::string strFilePath, int loopCoun
 //--------------------------------------------------------------------------------
 // 終了
 //--------------------------------------------------------------------------------
-void XA2LoadWave::Uninit()
+void XA2LoadAudio::Uninit()
 {
 	// waveフォーマットの解放
 	if (m_pWfx)
@@ -128,7 +124,7 @@ void XA2LoadWave::Uninit()
 //--------------------------------------------------------------------------------
 //  停止
 //--------------------------------------------------------------------------------
-void XA2LoadWave::Stop(IXAudio2SourceVoice *pSourceVoice)
+void XA2LoadAudio::Stop(IXAudio2SourceVoice *pSourceVoice)
 {
 	// 状態取得
 	XAUDIO2_VOICE_STATE state;
@@ -145,7 +141,7 @@ void XA2LoadWave::Stop(IXAudio2SourceVoice *pSourceVoice)
 //--------------------------------------------------------------------------------
 // Wavwファイル(チャンク)のチェック
 //--------------------------------------------------------------------------------
-HRESULT XA2LoadWave::CheckChunk(HANDLE m_file, DWORD format, DWORD *pChunkSize, DWORD *pChunkDataPosition)
+HRESULT XA2LoadAudio::CheckChunk(HANDLE m_file, DWORD format, DWORD *pChunkSize, DWORD *pChunkDataPosition)
 {
 	HRESULT hr = S_OK;
 	DWORD dwRead;
@@ -213,7 +209,7 @@ HRESULT XA2LoadWave::CheckChunk(HANDLE m_file, DWORD format, DWORD *pChunkSize, 
 //--------------------------------------------------------------------------------
 // Wavwファイル(チャンクデータ)の読み込み
 //--------------------------------------------------------------------------------
-DWORD XA2LoadWave::ReadChunkData(HANDLE m_file, void *pBuffer, DWORD dwBuffersize, DWORD dwBufferoffset)
+DWORD XA2LoadAudio::ReadChunkData(HANDLE m_file, void *pBuffer, DWORD dwBuffersize, DWORD dwBufferoffset)
 {
 	// ミューテクス
 	std::unique_lock<std::recursive_mutex> locker = XA2Manager::Locker();
@@ -269,7 +265,7 @@ XA2LoadWaveOnAll* XA2LoadWaveOnAll::Create(const std::string& strFilePath, const
 bool XA2LoadWaveOnAll::Load(std::string strFilePath, int loopCount)
 {
 	// wavヘッダ読み込み
-	LOAD_RESULT result = XA2LoadWave::Load(strFilePath, loopCount, false);
+	LOAD_RESULT result = XA2LoadAudio::Load(strFilePath, loopCount, false);
 	if (result == LOAD_RESULT_FAILD)
 	{
 		return false;
@@ -365,7 +361,7 @@ XA2LoadWaveStreaming* XA2LoadWaveStreaming::Create(const std::string& strFilePat
 bool XA2LoadWaveStreaming::Load(const std::string& strFilePath, const int loopCount)
 {
 	// ヘッダ情報ロード
-	if (!XA2LoadWave::Load(strFilePath, loopCount, true))
+	if (!XA2LoadAudio::Load(strFilePath, loopCount, true))
 	{
 		return false;
 	}
@@ -489,11 +485,5 @@ void XA2LoadWaveStreaming::AddNextBuffer(IXAudio2SourceVoice *pSourceVoice)
 //--------------------------------------------------------------------------------
 void XA2LoadWaveStreaming::ReleaseFlontBuffer()
 {
-	// 空の要素(先頭要素)を解放
-//	if (m_pAudioDatas.front())
-//	{
-//		delete m_pAudioDatas.front();
-//		m_pAudioDatas.front() = nullptr;
-//	}
 	m_pAudioDatas.pop_front();
 }

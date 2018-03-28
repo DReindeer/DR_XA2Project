@@ -11,6 +11,10 @@
 #include <list>
 #include <vector>
 
+// 定数定義
+//--------------------------------------------------------------------------------
+constexpr int MAX_STREAM_AUDIODATA = 5;
+
 // 前方宣言
 //--------------------------------------------------------------------------------
 class XA2SourceVoiceData;
@@ -18,10 +22,10 @@ class XA2SourceVoiceInterface;
 
 //--------------------------------------------------------------------------------
 // 
-// Waveファイルのロード - 基底クラス
+// オーディオファイルのロード - 基底クラス
 // 
 //--------------------------------------------------------------------------------
-class XA2LoadWave
+class XA2LoadAudio
 {
 public:
 	typedef enum
@@ -31,11 +35,18 @@ public:
 		LOAD_RESULT_CREATE		// 新規生成
 	}LOAD_RESULT;
 
-	XA2LoadWave() {}
-	virtual ~XA2LoadWave() {}
+	typedef enum
+	{
+		AUDIO_FORMAT_NONE = 0,		// none
+		AUDIO_FORMAT_WAVE,			// wave
+		AUDIO_FORMAT_OGG,			// ogg
+	}AUDIO_FORMAT;
+
+	XA2LoadAudio() {}
+	virtual ~XA2LoadAudio() {}
 
 	// 生成処理
-	virtual XA2LoadWave* Create(const std::string& file_path, const int loopCount) = 0;
+	virtual XA2LoadAudio* Create(const std::string& file_path, const int loopCount) = 0;
 
 	// 再生
 	virtual void Play(XA2SourceVoiceData *pSourceVoiceData, XA2SourceVoiceInterface *pSourceVoiceInterface) = 0;
@@ -53,6 +64,7 @@ public:
 	const WAVEFORMATEXTENSIBLE *GetWfx()const { return m_pWfx; }
 	const std::string &GetFilePass ()const { return m_filePass; }
 	const bool &GetStreamingFlag()const { return m_streaming; }
+	const AUDIO_FORMAT &GetAudioFormat()const { return m_audioFormat; }
 
 protected:
 	// サウンド読み込み/生成
@@ -63,13 +75,14 @@ protected:
 	static DWORD ReadChunkData(HANDLE hFile, void *pBuffer, DWORD dwBuffersize, DWORD dwBufferoffset);
 
 	// 変数定義
-	bool					m_streaming = false;	// ストリーミングフラグ
-	int						m_loopCount = 0;		// ループカウント
-	DWORD					m_audioSize = 0;		// オーディオデータサイズ
-	DWORD					m_dataStart = 0;		// オーディオデータ部分の先頭
-	WAVEFORMATEXTENSIBLE*	m_pWfx = nullptr;		// Waveのフォーマット
-	HANDLE					m_file = nullptr;		// カーソル位置
-	std::string				m_filePass;				// ファイルパス
+	AUDIO_FORMAT			m_audioFormat;						// オーディオのフォーマット
+	bool					m_streaming = false;				// ストリーミングフラグ
+	int						m_loopCount = 0;					// ループカウント
+	DWORD					m_audioSize = 0;					// オーディオデータサイズ
+	DWORD					m_dataStart = 0;					// オーディオデータ部分の先頭
+	WAVEFORMATEXTENSIBLE*	m_pWfx = nullptr;					// Waveのフォーマット
+	HANDLE					m_file = nullptr;					// カーソル位置
+	std::string				m_filePass;							// ファイルパス
 };
 
 
@@ -78,10 +91,10 @@ protected:
 // Waveファイルのロード - CPU全のせ
 // 
 //--------------------------------------------------------------------------------
-class XA2LoadWaveOnAll final : public XA2LoadWave
+class XA2LoadWaveOnAll final : public XA2LoadAudio
 {
 public:
-	XA2LoadWaveOnAll() {}
+	XA2LoadWaveOnAll() { m_audioFormat = AUDIO_FORMAT_WAVE; }
 	virtual ~XA2LoadWaveOnAll();
 
 	// 生成処理
@@ -106,10 +119,10 @@ private:
 // Waveファイルのロード - ストリーミング
 // 
 //--------------------------------------------------------------------------------
-class XA2LoadWaveStreaming final : public XA2LoadWave
+class XA2LoadWaveStreaming final : public XA2LoadAudio
 { 
 public:
-	XA2LoadWaveStreaming() {}
+	XA2LoadWaveStreaming() { m_audioFormat = AUDIO_FORMAT_WAVE; }
 	virtual ~XA2LoadWaveStreaming() {}
 
 	// 生成処理

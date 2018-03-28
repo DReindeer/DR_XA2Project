@@ -35,12 +35,12 @@ public:
 	// 取得
 	const std::string &GetFilePass() { return m_strSoundFilePath; }			// ファイルパス
 	IXAudio2SourceVoice *GetSourceVoice() { return m_pSourceVoice; }		// ソースボイス
-	XA2LoadWave *GetWaveData() { return  m_pWaveData; }						// waveデータのポインタ
+	XA2LoadAudio *GetWaveData() { return  m_pWaveData; }						// waveデータのポインタ
 
 	// 設定
 	void SetFilePass(const std::string &filePass) { m_strSoundFilePath = filePass; }				// ファイルパス
 	void SetSourceVoice(IXAudio2SourceVoice *pSourceVoice) { m_pSourceVoice = pSourceVoice; }		// ソースボイス
-	void SetWaveData(XA2LoadWave *pWaveData) { m_pWaveData = pWaveData; }							// waveデータのポインタ
+	void SetWaveData(XA2LoadAudio *pWaveData) { m_pWaveData = pWaveData; }							// waveデータのポインタ
 
 	// ソースボイス
 	void FlushSourceBuffers() {if(m_pSourceVoice)m_pSourceVoice->FlushSourceBuffers();}
@@ -56,7 +56,7 @@ public:
 protected:
 	std::string			m_strSoundFilePath;				// ファイルパス
 	IXAudio2SourceVoice *m_pSourceVoice	= nullptr;		// ソースボイス
-	XA2LoadWave			*m_pWaveData	= nullptr;		// waveデータのポインタ
+	XA2LoadAudio			*m_pWaveData	= nullptr;		// waveデータのポインタ
 };
 
 // ソースボイスインターフェイス - 基底
@@ -68,8 +68,8 @@ public:
 	~XA2SourceVoiceInterface();
 
 	// 生成
-	virtual IXAudio2SourceVoice *Create(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave) = 0;
-	virtual IXAudio2SourceVoice *CreatePlay(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave) = 0;
+	virtual IXAudio2SourceVoice *Create(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave) = 0;
+	virtual IXAudio2SourceVoice *CreatePlay(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave) = 0;
 
 	virtual void Update() = 0;				// 更新
 	void Uninit();							// 終了

@@ -37,8 +37,8 @@ public:
 	XA2SourceVoice3D() {}
 	~XA2SourceVoice3D() { Uninit(); }
 
-	IXAudio2SourceVoice *Create(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)override;
-	IXAudio2SourceVoice *CreatePlay(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)override;
+	IXAudio2SourceVoice *Create(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)override;
+	IXAudio2SourceVoice *CreatePlay(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)override;
 
 	void Update()override;
 	void Uninit();

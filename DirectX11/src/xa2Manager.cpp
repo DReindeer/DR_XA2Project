@@ -19,6 +19,7 @@ XA2SoundResourceManager *XA2Manager::m_pSoundResourceManager = nullptr;	// ƒTƒEƒ
 XA2LoadWaveOnAll *XA2Manager::m_pLoadWaveOnAll;							// wave“Ç‚İ‚İ - CPU‘S‚Ì‚¹
 XA2LoadWaveStreaming *XA2Manager::m_pLoadWaveStreaming;					// wave“Ç‚İ‚İ - ƒXƒgƒŠ[ƒ~ƒ“ƒO
 XA2LoadOggOnAll *XA2Manager::m_pLoadOggOnAll;							// ogg“Ç‚İ‚İ - CPU‘S‚Ì‚¹
+XA2LoadOggStreaming *XA2Manager::m_pLoadOggStreaming;					// ogg“Ç‚İ‚İ - CPUƒXƒgƒŠ[ƒ~ƒ“ƒO
 
 std::recursive_mutex XA2Manager::m_mutex;								// ƒ~ƒ…[ƒeƒNƒX
 X3DAUDIO_HANDLE XA2Manager::m_x3dInstance = { 0 };						// ƒnƒ“ƒhƒ‹
@@ -67,7 +68,8 @@ XA2Manager::XA2Manager(HWND hWnd)
 	//--------------------------------------------------------------------------------
 	m_pLoadWaveOnAll = new XA2LoadWaveOnAll;			// wave - CPU‘S‚Ì‚¹
 	m_pLoadWaveStreaming = new XA2LoadWaveStreaming;	// wave - ƒXƒgƒŠ[ƒ~ƒ“ƒO
-	m_pLoadOggOnAll = new XA2LoadOggOnAll;			// ogg - CPU‘S‚Ì‚¹
+	m_pLoadOggOnAll = new XA2LoadOggOnAll;				// ogg - CPU‘S‚Ì‚¹
+	m_pLoadOggStreaming = new XA2LoadOggStreaming;		// ogg - ƒXƒgƒŠ[ƒ~ƒ“ƒO
 
 	// ƒ\[ƒXƒ{ƒCƒXƒ}ƒl[ƒWƒƒ
 	//--------------------------------------------------------------------------------
@@ -128,6 +130,14 @@ XA2Manager::~XA2Manager()
 	{
 		delete m_pLoadOggOnAll;
 		m_pLoadOggOnAll = nullptr;
+	}
+
+	// ogg“Ç‚İ‚İ - ƒXƒgƒŠ[ƒ~ƒ“ƒO
+	//--------------------------------------------------------------------------------
+	if (m_pLoadOggStreaming)
+	{
+		delete m_pLoadOggStreaming;
+		m_pLoadOggStreaming = nullptr;
 	}
 
 	// ƒ}ƒXƒ^ƒŠƒ“ƒOƒ{ƒCƒX

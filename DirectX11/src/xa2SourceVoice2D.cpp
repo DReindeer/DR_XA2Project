@@ -15,7 +15,7 @@
 //--------------------------------------------------------------------------------
 // 生成処理
 //--------------------------------------------------------------------------------
-IXAudio2SourceVoice *XA2SourceVoice2D::Create(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)
+IXAudio2SourceVoice *XA2SourceVoice2D::Create(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)
 {
 	// ミューテックス
 #ifdef THREAD_ON
@@ -30,7 +30,7 @@ IXAudio2SourceVoice *XA2SourceVoice2D::Create(std::string strFilePath, int loopC
 
 	// リソースの取得
 	pLoadWave->Create(strFilePath, loopCount);	// wave形式で取得
-	XA2LoadWave *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
+	XA2LoadAudio *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
 
 	// ソースボイスの生成
 	IXAudio2SourceVoice *pSourceVoice = pSourceVoiceData->GetSourceVoice();
@@ -64,14 +64,14 @@ IXAudio2SourceVoice *XA2SourceVoice2D::Create(std::string strFilePath, int loopC
 //--------------------------------------------------------------------------------
 // 生成して再生
 //--------------------------------------------------------------------------------
-IXAudio2SourceVoice *XA2SourceVoice2D::CreatePlay(std::string strFilePath, int loopCount, XA2LoadWave *pLoadWave)
+IXAudio2SourceVoice *XA2SourceVoice2D::CreatePlay(std::string strFilePath, int loopCount, XA2LoadAudio *pLoadWave)
 {
 	// 生成
 	IXAudio2SourceVoice *pSourceVoice = Create(strFilePath, loopCount, pLoadWave);
 
 	// リソースの取得
 	XA2SoundResourceManager *pXA2SoundResourceManager = XA2Manager::GetSoundResourceManager();		// サウンドリソースマネージャ
-	XA2LoadWave *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
+	XA2LoadAudio *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
 
 	// バッファの値設定
 	XAUDIO2_BUFFER xa2buffer;
@@ -121,7 +121,9 @@ void XA2SourceVoice2D::Polling()
 	std::unique_lock<std::recursive_mutex> locker = XA2Manager::Locker();
 
 	// ポーリング処理
-	XA2LoadWave *pWaveData = nullptr;
+	XA2LoadAudio *pWaveData = nullptr;
+	XA2LoadWaveStreaming *pWaveStreaming = nullptr;
+	XA2LoadOggStreaming *pOggStreaming = nullptr;
 	for (auto it : m_sourceVoices)
 	{
 		if (it == nullptr)continue;
@@ -129,8 +131,17 @@ void XA2SourceVoice2D::Polling()
 		pWaveData = it->GetWaveData();
 		if (pWaveData->GetStreamingFlag())
 		{
-			XA2LoadWaveStreaming* pLoadWaveStreaming = (XA2LoadWaveStreaming*)pWaveData;
-			pLoadWaveStreaming->Polling(it->GetSourceVoice());
+			switch ((int)pWaveData->GetAudioFormat())
+			{
+			case XA2LoadAudio::AUDIO_FORMAT_WAVE:
+				pWaveStreaming = (XA2LoadWaveStreaming*)pWaveData;
+				pWaveStreaming->Polling(it->GetSourceVoice());
+				break;
+			case XA2LoadAudio::AUDIO_FORMAT_OGG:
+				pOggStreaming = (XA2LoadOggStreaming*)pWaveData;
+				pOggStreaming->Polling(it->GetSourceVoice());
+				break;
+			}
 		}
 	}
 }

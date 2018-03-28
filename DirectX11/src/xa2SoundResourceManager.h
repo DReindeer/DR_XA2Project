@@ -22,20 +22,20 @@ public:
 	~XA2SoundResourceManager();			// デストラクタ
 
 	// 取得
-	XA2LoadWave *GetXA2SoundResource(std::string strFilePath);
+	XA2LoadAudio *GetXA2SoundResource(std::string strFilePath);
 
 	// 指定ファイル名の有無を調べる
 	int CheckXA2SoundResource(std::string strFilePath);
 
 	// 登録
-	void AddXA2SoundResource(XA2LoadWave* soundResource) { m_xa2SoundResources.push_back(soundResource); }
+	void AddXA2SoundResource(XA2LoadAudio* soundResource) { m_xa2SoundResources.push_back(soundResource); }
 
 	// 全消去
 	void Uninit();
 	
 private:
 	// サウンドリソースのコンテナ
-	std::list<XA2LoadWave*> m_xa2SoundResources;
+	std::list<XA2LoadAudio*> m_xa2SoundResources;
 };
 
 #endif
