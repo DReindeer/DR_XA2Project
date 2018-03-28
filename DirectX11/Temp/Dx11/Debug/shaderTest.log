@@ -1,40 +1,4 @@
-﻿  XModelLoader.cpp
-  xa2SourceVoiceManager.cpp
-  xa2SourceVoiceInterface.cpp
-  xa2SourceVoice3D.cpp
-  xa2SourceVoice2D.cpp
-  xa2SoundResourceManager.cpp
-  xa2OggDecoder.cpp
-  xa2MasteringVoice.cpp
-  xa2Manager.cpp
-  xa2LoadWave.cpp
-  xa2Listener.cpp
-  xa2Core.cpp
-  WMath.cpp
-  utility.cpp
-  texManager.cpp
-  sceneXModelListener.cpp
-  sceneXModel.cpp
-  sceneBox.cpp
-  scene3DPoly.cpp
-  scene3D.cpp
-  コードを生成中...
-  コンパイル中...
-  scene2D.cpp
-e:\擬似ローカル\新しいフォルダー\dr_xa2project\directx11\src\scene2d.cpp(207): warning C4101: 'msr': ローカル変数は 1 度も使われていません。
-  scene.cpp
-  renderer.cpp
-  modelManager.cpp
-  manager.cpp
-  mainController.cpp
-  main.cpp
-  Light.cpp
-  inputXInput.cpp
-  inputMouse.cpp
-  inputKeyboard.cpp
-  input.cpp
-  camera.cpp
-  コードを生成中...
+﻿  xa2LoadOgg.cpp
   libvorbisfile_static.lib(framing.obj) : MSIL .netmodule または /GL を伴ってコンパイルされたモジュールが見つかりました。/LTCG を使用して再開始してください。リンカーのパフォーマンスを向上させるためには、コマンドラインに /LTCG を追加してください。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   コード生成しています。

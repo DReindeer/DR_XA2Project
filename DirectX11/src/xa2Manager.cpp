@@ -14,10 +14,11 @@
 //--------------------------------------------------------------------------------
 XA2Core *XA2Manager::m_pXA2Core = nullptr;								// XAudio2のエンジン
 XA2MasteringVoice *XA2Manager::m_pMaster = nullptr;						// マスタリングボイス
-XA2LoadWaveOnAll *XA2Manager::m_pLoadWaveOnAll;							// wave読み込み - CPU全のせ
-XA2LoadWaveStreaming *XA2Manager::m_pLoadWaveStreaming;					// wave読み込み - ストリーミング
 XA2SourceVoiceManager *XA2Manager::m_pSourceVoiceManager = nullptr;		// サウンドオブジェクトマネージャ
 XA2SoundResourceManager *XA2Manager::m_pSoundResourceManager = nullptr;	// サウンドリソースマネージャ
+XA2LoadWaveOnAll *XA2Manager::m_pLoadWaveOnAll;							// wave読み込み - CPU全のせ
+XA2LoadWaveStreaming *XA2Manager::m_pLoadWaveStreaming;					// wave読み込み - ストリーミング
+XA2LoadOggOnAll *XA2Manager::m_pLoadOggOnAll;							// ogg読み込み - CPU全のせ
 
 std::recursive_mutex XA2Manager::m_mutex;								// ミューテクス
 X3DAUDIO_HANDLE XA2Manager::m_x3dInstance = { 0 };						// ハンドル
@@ -66,6 +67,7 @@ XA2Manager::XA2Manager(HWND hWnd)
 	//--------------------------------------------------------------------------------
 	m_pLoadWaveOnAll = new XA2LoadWaveOnAll;			// wave - CPU全のせ
 	m_pLoadWaveStreaming = new XA2LoadWaveStreaming;	// wave - ストリーミング
+	m_pLoadOggOnAll = new XA2LoadOggOnAll;			// ogg - CPU全のせ
 
 	// ソースボイスマネージャ
 	//--------------------------------------------------------------------------------
@@ -118,6 +120,14 @@ XA2Manager::~XA2Manager()
 	{
 		delete m_pLoadWaveStreaming;
 		m_pLoadWaveStreaming = nullptr;
+	}
+
+	// ogg読み込み - CPU全のせ
+	//--------------------------------------------------------------------------------
+	if (m_pLoadOggOnAll)
+	{
+		delete m_pLoadOggOnAll;
+		m_pLoadOggOnAll = nullptr;
 	}
 
 	// マスタリングボイス

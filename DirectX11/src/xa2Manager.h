@@ -25,6 +25,7 @@ class XA2SourceVoiceManager;
 class XA2SoundResourceManager;
 class XA2LoadWaveOnAll;
 class XA2LoadWaveStreaming;
+class XA2LoadOggOnAll;
 
 
 // XAudio2の処理に必要なクラスをまとめたマネージャ
@@ -35,15 +36,16 @@ public:
 	XA2Manager(HWND hWnd);	// コンストラクタ
 	~XA2Manager();			// デストラクタ
 
-	// 関係するクラス
+	// XAudio2
 	//--------------------------------------------------------------------------------
 	// 取得
 	static XA2Core *GetXA2Core() { return m_pXA2Core; }												// XAudio2のエンジン
 	static XA2MasteringVoice *GetMasteringVoice() { return m_pMaster; }								// マスタリングボイス
-	static XA2LoadWaveOnAll *GetLoadWaveOnAll() { return m_pLoadWaveOnAll; }						// wave読み込み - CPU全のせ
-	static XA2LoadWaveStreaming *GetLoadWaveStreaming() { return m_pLoadWaveStreaming; }			// wave読み込み - ストリーミング
 	static XA2SourceVoiceManager *GetSourceVoiceManager() { return m_pSourceVoiceManager; }			// サウンドオブジェクトマネージャ
 	static XA2SoundResourceManager *GetSoundResourceManager() { return m_pSoundResourceManager; }	// サウンドリソースマネージャ
+	static XA2LoadWaveOnAll *GetLoadWaveOnAll() { return m_pLoadWaveOnAll; }						// wave読み込み - CPU全のせ
+	static XA2LoadWaveStreaming *GetLoadWaveStreaming() { return m_pLoadWaveStreaming; }			// wave読み込み - ストリーミング
+	static XA2LoadOggOnAll *GetLoadOggOnAll() { return m_pLoadOggOnAll; }							// ogg読み込み - CPU全のせ
 
 
 	// X3DAudio
@@ -60,14 +62,15 @@ public:
 	}
 
 private:
-	// 関係するクラス
+	// XAudio2
 	//--------------------------------------------------------------------------------
 	static XA2Core *m_pXA2Core;									// XAudio2のエンジン
 	static XA2MasteringVoice *m_pMaster;						// マスタリングボイス
-	static XA2LoadWaveOnAll *m_pLoadWaveOnAll;					// wave読み込み - CPU全のせ
-	static XA2LoadWaveStreaming *m_pLoadWaveStreaming;			// wave読み込み - ストリーミング
 	static XA2SourceVoiceManager *m_pSourceVoiceManager;		// サウンドオブジェクトマネージャ
 	static XA2SoundResourceManager *m_pSoundResourceManager;	// サウンドリソースマネージャ
+	static XA2LoadWaveOnAll *m_pLoadWaveOnAll;					// wave読み込み - CPU全のせ
+	static XA2LoadWaveStreaming *m_pLoadWaveStreaming;			// wave読み込み - ストリーミング
+	static XA2LoadOggOnAll *m_pLoadOggOnAll;					// ogg読み込み - CPU全のせ
 
 
 	// X3DAudio

@@ -268,6 +268,7 @@ XA2LoadWaveOnAll* XA2LoadWaveOnAll::Create(const std::string& strFilePath, const
 //--------------------------------------------------------------------------------
 bool XA2LoadWaveOnAll::Load(std::string strFilePath, int loopCount)
 {
+	// wavÉwÉbÉ_ì«Ç›çûÇ›
 	LOAD_RESULT result = XA2LoadWave::Load(strFilePath, loopCount, false);
 	if (result == LOAD_RESULT_FAILD)
 	{

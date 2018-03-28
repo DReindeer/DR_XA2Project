@@ -150,7 +150,7 @@
     <ClInclude Include="src\sceneXModelListener.h">
       <Filter>ヘッダー ファイル\scene</Filter>
     </ClInclude>
-    <ClInclude Include="src\xa2OggDecoder.h">
+    <ClInclude Include="src\xa2LoadOgg.h">
       <Filter>ヘッダー ファイル\xa2</Filter>
     </ClInclude>
   </ItemGroup>
@@ -251,7 +251,7 @@
     <ClCompile Include="src\sceneXModelListener.cpp">
       <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\xa2OggDecoder.cpp">
+    <ClCompile Include="src\xa2LoadOgg.cpp">
       <Filter>ソース ファイル\xa2</Filter>
     </ClCompile>
   </ItemGroup>

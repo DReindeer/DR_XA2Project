@@ -37,7 +37,7 @@
     <ClInclude Include="src\xa2LoadWave.h" />
     <ClInclude Include="src\xa2Manager.h" />
     <ClInclude Include="src\xa2MasteringVoice.h" />
-    <ClInclude Include="src\xa2OggDecoder.h" />
+    <ClInclude Include="src\xa2LoadOgg.h" />
     <ClInclude Include="src\xa2SoundResourceManager.h" />
     <ClInclude Include="src\xa2SourceVoice2D.h" />
     <ClInclude Include="src\xa2SourceVoice3D.h" />
@@ -72,7 +72,7 @@
     <ClCompile Include="src\xa2LoadWave.cpp" />
     <ClCompile Include="src\xa2Manager.cpp" />
     <ClCompile Include="src\xa2MasteringVoice.cpp" />
-    <ClCompile Include="src\xa2OggDecoder.cpp" />
+    <ClCompile Include="src\xa2LoadOgg.cpp" />
     <ClCompile Include="src\xa2SoundResourceManager.cpp" />
     <ClCompile Include="src\xa2SourceVoice2D.cpp" />
     <ClCompile Include="src\xa2SourceVoice3D.cpp" />

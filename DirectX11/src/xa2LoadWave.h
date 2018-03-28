@@ -66,7 +66,7 @@ protected:
 	bool					m_streaming = false;	// ストリーミングフラグ
 	int						m_loopCount = 0;		// ループカウント
 	DWORD					m_audioSize = 0;		// オーディオデータサイズ
-	DWORD					m_dataStart = 0;		// 元のオーディオデータ
+	DWORD					m_dataStart = 0;		// オーディオデータ部分の先頭
 	WAVEFORMATEXTENSIBLE*	m_pWfx = nullptr;		// Waveのフォーマット
 	HANDLE					m_file = nullptr;		// カーソル位置
 	std::string				m_filePass;				// ファイルパス
@@ -85,7 +85,7 @@ public:
 	virtual ~XA2LoadWaveOnAll();
 
 	// 生成処理
-	XA2LoadWaveOnAll* Create(const std::string& file_path, const int loopCount)override;
+	XA2LoadWaveOnAll *Create(const std::string& file_path, const int loopCount)override;
 
 	// 再生
 	void Play(XA2SourceVoiceData *pSourceVoiceData, XA2SourceVoiceInterface *pSourceVoiceInterface)override;
@@ -97,7 +97,7 @@ private:
 	// ロード処理
 	bool Load(std::string strFilePath, int loopCount);
 
-	// 変数定義
+	// オーディオデータ
 	std::vector<BYTE> m_pAudioData;
 };
 

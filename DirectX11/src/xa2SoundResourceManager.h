@@ -11,6 +11,7 @@
 #include <string>
 #include <unordered_map>
 #include "xa2LoadWave.h"
+#include "xa2LoadOgg.h"
 
 // サウンドリソースマネージャ
 //--------------------------------------------------------------------------------

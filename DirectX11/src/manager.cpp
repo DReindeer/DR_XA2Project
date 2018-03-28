@@ -105,13 +105,13 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, bool bWindow)
 
 	// ソースボイス作成
 	XA2SourceVoice2D *pXA2SourceVoice = new XA2SourceVoice2D;
-	pXA2SourceVoice->Create("data/BGM/BGM_Yurumu.wav", -1, XA2Manager::GetLoadWaveStreaming());
+	pXA2SourceVoice->Create("data/BGM/BGM_Yurumu.ogg", -1, XA2Manager::GetLoadOggOnAll());
 
 	// サウンドオブジェクト追加
 	XA2SourceVoiceManager *pSoundObjectManager = XA2Manager::GetSourceVoiceManager();
 	pSoundObjectManager->SetXA2SoundObject(pXA2SourceVoice, this);
 
-	pXA2SourceVoice->Play("data/BGM/BGM_Yurumu.wav");
+	pXA2SourceVoice->Play("data/BGM/BGM_Yurumu.ogg");
 
 	return S_OK;
 }
