@@ -11,7 +11,8 @@
 <li>不要なSEを消去する機構を作成</li>
 <li><b>X3DAudioを導入</b></li>
 <li>Streaming再生のポーリング処理を修正</li>
-<li>ogg→waveへのデコード           ← 今ココ！</li>
+<li>ogg→waveへのデコード</li>
+<li>3D音源再生時の自動モノラル変換           ← 今ココ！</li>
 </ol>
 
 <h2>[発生中のバグ報告など]</h2>
@@ -33,8 +34,9 @@
 
 <h2>[ライブラリ]</h2>
 <ul>
-<li>DirectX11(計算ライブラリ::DirectXMath)</li>
+<li>DirectX11 --- 計算ライブラリはDirectXMath</li>
 <li>DirectXTex</li>
+<li>libogg_static, libvorbis_static, libvorbisfile_static(oggデコード用ライブラリ)</li>
 </ul>
 
 <h2>[言語]</h2>
