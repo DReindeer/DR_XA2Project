@@ -397,32 +397,33 @@ void XA2LoadOggStreaming::AddNextBuffer(IXAudio2SourceVoice *pSourceVoice)
 {
 	// データを書き込む
 	std::vector<BYTE> audioDatas = { 0 };
-	audioDatas.resize(m_pWfx->Format.nAvgBytesPerSec);
-	long size = 0,
-		 ret = 0;
+	DWORD dataSize = m_pWfx->Format.nAvgBytesPerSec;	// データ長
+	audioDatas.resize(dataSize);
+	long readPosition = 0, ret = 0;
 	int currentSection = 0;
-	while(size != m_pWfx->Format.nAvgBytesPerSec)
+	while(readPosition != dataSize)
 	{
-		ret = ov_read(m_pvf, (char*)&audioDatas[size], m_pWfx->Format.nAvgBytesPerSec - size, 0, quantizationBits, 1, &currentSection);
+		ret = ov_read(m_pvf, (char*)&audioDatas[readPosition], dataSize - readPosition, 0, quantizationBits, 1, &currentSection);
 		if (ret == 0)
 		{
 			break;
 		}
 		else
 		{
-			size += ret;
+			// 書き込み位置を進める
+			readPosition += ret;
 		}
 	}
 
 	// カーソルを進める
-	m_writeCursor += size;
+	m_writeCursor += dataSize;
 
 	// リストに追加
 	m_pAudioDatas.push_back(audioDatas);
 
 	// SourceVoiceにデータを送信
 	XAUDIO2_BUFFER xa2buffer = { 0 };
-	xa2buffer.AudioBytes = size;
+	xa2buffer.AudioBytes = dataSize;
 	xa2buffer.pAudioData = &m_pAudioDatas.back()[0];
 	if (m_audioSize <= m_writeCursor)
 	{

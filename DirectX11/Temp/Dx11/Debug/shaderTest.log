@@ -1,4 +1,4 @@
-﻿  manager.cpp
+﻿  xa2LoadOgg.cpp
   libvorbisfile_static.lib(framing.obj) : MSIL .netmodule または /GL を伴ってコンパイルされたモジュールが見つかりました。/LTCG を使用して再開始してください。リンカーのパフォーマンスを向上させるためには、コマンドラインに /LTCG を追加してください。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   コード生成しています。
