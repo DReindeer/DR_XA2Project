@@ -8,6 +8,7 @@
 <li>ソースボイスを2D,3Dで分ける</li>
 <li>waveをcpu全のせ,Streaming再生で分ける</li>
 <li>Streaming再生を別スレッドで行う機構を作成</li>
+<li>同じSEを複数同時に鳴らせるようにする</li>
 <li>不要なSEを消去する機構を作成</li>
 <li><b>X3DAudioを導入</b></li>
 <li>Streaming再生のポーリング処理を修正</li>
