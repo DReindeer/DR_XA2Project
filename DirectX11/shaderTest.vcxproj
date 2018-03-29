@@ -151,7 +151,7 @@
     <OutDir>$(SolutionDir)</OutDir>
     <TargetName>$(ProjectName)$(Configuration)</TargetName>
     <IncludePath>$(SolutionDir)..\Libs\include;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\shared;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\um;$(SolutionDir)../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Include;../Libs\ogg\libogg\include;../Libs\ogg\libvorbis\include;$(IncludePath)</IncludePath>
-    <LibraryPath>../Libs\DirectXTex\Bin\Desktop_2017\Win32\$(Configuration)\;../Libs\DirectXTex\Bin\Desktop_2017\Win32;../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Lib\x86;../Libs\ogg\Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>../Libs\DirectXTex\Bin\Desktop_2017\Win32\$(Configuration)\;../Libs\DirectXTex\Bin\Desktop_2017\Win32;../Libs\Microsoft_DirectX_SDK_%28June 2010%29\Lib\x86;../Libs\ogg/Release;$(LibraryPath)</LibraryPath>
     <IntDir>$(SolutionDir)Temp\Dx11\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -172,10 +172,14 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

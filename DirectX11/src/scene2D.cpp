@@ -204,43 +204,6 @@ void CScene2D::Uninit(void)
 void CScene2D::Update(void)
 {
 	ID3D11DeviceContext* pDeviceContext = CRenderer::GetDeviceContext();
-	D3D11_MAPPED_SUBRESOURCE msr;
-	/*
-	HRESULT hr = pDeviceContext->Map(m_pVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &msr);
-	if (FAILED(hr))
-	{
-		return;
-	}
-
-	void* buf = msr.pData;
-	if (buf)
-	{
-		XMFLOAT3 pos = GetPos();
-		XMFLOAT3 size = GetSize();
-		XMFLOAT3 scl = GetScl();
-		XMFLOAT3 rot = GetRot();
-		float len = sqrt(size.x * size.x + size.y * size.y);
-		float ang = atan2(size.y, size.x);
-		m_pVtxData[0].pos = XMFLOAT3(cosf(ang + PI + rot.z) * len * scl.x + pos.x,
-			sinf(ang + PI + rot.z) * len * scl.y + pos.y, 0.f);
-		m_pVtxData[1].pos = XMFLOAT3(cosf(-ang + rot.z) * len * scl.x + pos.x,
-			sinf(-ang + rot.z) * len * scl.y + pos.y, 0.f);
-		m_pVtxData[2].pos = XMFLOAT3(cosf(-ang + PI + rot.z) * len * scl.x + pos.x,
-			sinf(-ang + PI + rot.z) * len * scl.y + pos.y, 0.f);
-		m_pVtxData[3].pos = XMFLOAT3(cosf(ang + rot.z) * len * scl.x + pos.x,
-			sinf(ang + rot.z) * len * scl.y + pos.y, 0.f);
-
-		// UV座標の設定
-		m_pVtxData[0].tex = XMFLOAT2(m_posUV.x, m_posUV.y);
-		m_pVtxData[1].tex = XMFLOAT2(m_posUV.x + m_widthUV, m_posUV.y);
-		m_pVtxData[2].tex = XMFLOAT2(m_posUV.x, m_posUV.y + m_heightUV);
-		m_pVtxData[3].tex = XMFLOAT2(m_posUV.x + m_widthUV, m_posUV.y + m_heightUV);
-
-		// msr.pData = m_pVtxData;
-		// memcpy(buf, m_pVtxData, sizeof(VERTEX_2D) * 4); // 4頂点分コピー
-		pDeviceContext->Unmap(m_pVertexBuffer, 0);
-	}
-	*/
 
 	XMFLOAT3 pos = GetPos();
 	XMFLOAT3 size = GetSize();
@@ -322,7 +285,6 @@ void CScene2D::Draw(void)
 	pDeviceContext->UpdateSubresource(m_pConstantBufferModel, 0, nullptr, &hBufferScene, 0, 0);
 	//コンテキストに設定
 	pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer2DCam);
-
 
 	// レイアウトの設定
 	// -------- -------- -------- --------
