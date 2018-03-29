@@ -130,18 +130,31 @@ IXAudio2SourceVoice *XA2SourceVoice3D::CreatePlay(std::string strFilePath, int l
 	// リソースの取得
 	XA2SoundResourceManager *pXA2SoundResourceManager = XA2Manager::GetSoundResourceManager();		// サウンドリソースマネージャ
 	XA2LoadAudio *pSoundResource = pXA2SoundResourceManager->GetXA2SoundResource(strFilePath);
-	
+
 	// バッファの値設定
 	XAUDIO2_BUFFER xa2buffer;
 	memset(&xa2buffer, 0, sizeof(XAUDIO2_BUFFER));
 	XA2LoadWaveOnAll *pLoadWaveOnAll = nullptr;
+	XA2LoadOggOnAll *pLoadOggOnAll = nullptr;
 	if (pSoundResource->GetStreamingFlag() == false)
 	{
-		pLoadWaveOnAll = (XA2LoadWaveOnAll*)pSoundResource;
-		xa2buffer.AudioBytes = pLoadWaveOnAll->GetAudioSize();
-		xa2buffer.pAudioData = &pLoadWaveOnAll->GetAudioData()[0][0];
-		xa2buffer.Flags = XAUDIO2_END_OF_STREAM;
-		xa2buffer.LoopCount = pLoadWaveOnAll->GetLoopCount();
+		switch (pSoundResource->GetAudioFormat())
+		{
+		case XA2LoadAudio::AUDIO_FORMAT_WAVE:
+			pLoadWaveOnAll = (XA2LoadWaveOnAll*)pSoundResource;
+			xa2buffer.AudioBytes = pLoadWaveOnAll->GetAudioSize();
+			xa2buffer.pAudioData = &pLoadWaveOnAll->GetAudioData()[0][0];
+			xa2buffer.Flags = XAUDIO2_END_OF_STREAM;
+			xa2buffer.LoopCount = pLoadWaveOnAll->GetLoopCount();
+			break;
+		case XA2LoadAudio::AUDIO_FORMAT_OGG:
+			pLoadOggOnAll = (XA2LoadOggOnAll*)pSoundResource;
+			xa2buffer.AudioBytes = pLoadOggOnAll->GetAudioSize();
+			xa2buffer.pAudioData = &pLoadOggOnAll->GetAudioData()[0][0];
+			xa2buffer.Flags = XAUDIO2_END_OF_STREAM;
+			xa2buffer.LoopCount = pLoadOggOnAll->GetLoopCount();
+			break;
+		}
 
 		// オーディオバッファの登録
 		pSourceVoice->SubmitSourceBuffer(&xa2buffer);

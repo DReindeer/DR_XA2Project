@@ -1,6 +1,5 @@
 *.exe
 *.cache
-*.dll
 *.log
 *.pdb
 *.ipch
